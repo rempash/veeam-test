@@ -1,6 +1,6 @@
 import { takeEvery, put } from 'redux-saga/effects';
 import { fileUploadAction, upload, success, fail } from './index';
-import { add } from '../notifications';
+import { add as addNotification } from '../notifications';
 import { FileSizeError } from './errors/fileSize.error';
 import { EmptyFileError } from './errors/emptyFile.error';
 import { WrongTypeError } from './errors/wrongType.error';
@@ -22,11 +22,7 @@ function* handleImgUpload(action: fileUploadAction) {
             yield put(success(src));
         } else throw new EmptyFileError();
     } catch(e) {
-        yield put(add({
-            text: e.message || 'Something went wrong',
-            severity: 'error',
-            id: Math.random()
-        }));
+        yield put(addNotification(e.message));
         yield put(fail())
     }
 }

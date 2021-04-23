@@ -28,7 +28,7 @@ export const MarkerInput: FC<MarkerInputProps> = ({ x = 0, y = 0, id = '' }) => 
 
     useLayoutEffect(
         () => {
-            if (id && id !== previousId.current) {
+            if (id !== previousId.current) {
                 dispatch(tryUpdate({ text, id: previousId.current }));
                 const { text: previousText } = getMarkerById(id) || { text: '' };
                 setText(previousText);

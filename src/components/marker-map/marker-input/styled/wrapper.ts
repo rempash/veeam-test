@@ -15,7 +15,6 @@ export const Wrapper = styled.div`
         top: ${y + (height / 5)}vh;
         `;
     }}
-    overflow: hidden;
     position: absolute;
     padding: 10px;
     z-index: 999;
