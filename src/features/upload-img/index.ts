@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ChangeEvent } from 'react';
 import { RootState } from '../../store';
 
-export interface uploadImgState {
+export type uploadImgState = {
     src: string | null,
     isLoading: boolean,
     isOk: boolean,

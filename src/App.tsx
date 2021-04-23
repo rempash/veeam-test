@@ -11,8 +11,6 @@ function App() {
 
   const src = useSelector(selectors.src);
 
-  console.log(src);
-
   return (
     <div className="App">
       <Notifications />

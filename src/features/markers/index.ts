@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 
-export interface MarkerPosition {
+export type MarkerPosition = {
     x: number,
     y: number
 };
 
-export interface MarkerMetaData {
+export type MarkerMetaData = {
     id: string,
     text: string,
 };
