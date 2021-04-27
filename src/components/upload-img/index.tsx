@@ -1,15 +1,14 @@
-import React, { ReactElement, VoidFunctionComponent, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { ReactElement, VoidFunctionComponent, useRef, useContext } from 'react';
+import { uploadImgContext } from '../../features/upload-img';
 import Button from '@material-ui/core/Button';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { InputFile } from './styled/input-file';
-import { upload } from '../../features/upload-img';
 
 export const UploadImg: VoidFunctionComponent = (): ReactElement => {
 
     const fileInput = useRef<HTMLInputElement>(null);
 
-    const dispatch = useDispatch();
+    const { uploadFile } = useContext(uploadImgContext);
 
     const onUpload = () => {
         if (fileInput && fileInput.current) {
@@ -20,8 +19,9 @@ export const UploadImg: VoidFunctionComponent = (): ReactElement => {
     return (
         <div>
             <InputFile
+                data-testid='inputFile'
                 ref={ fileInput }
-                onChange={ e => dispatch(upload(e)) }
+                onChange={ e => uploadFile(e) }
             />
             <Button
                 variant="contained"

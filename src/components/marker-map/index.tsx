@@ -1,11 +1,10 @@
-import React, { FC, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC, useCallback, useContext } from 'react';
 import { Img } from './styled/img';
 import { Wrapper } from './styled/wrapper';
 import { Marker } from './marker';
-import { offer, selectors } from '../../features/markers';
 import { MarkerInput } from './marker-input';
 import { useMarkerInputType, useMarkerInput, markerInputState } from './hooks/useMarkerInput';
+import { markersContext } from '../../features/markers';
 
 interface MarkerMapProps {
     src: string,
@@ -13,9 +12,7 @@ interface MarkerMapProps {
 
 export const MarkerMap: FC<MarkerMapProps> = ({ src }) => {
 
-    const dispatch = useDispatch();
-
-    const markers = useSelector(selectors.getMarkers);
+    const { markers, addMarker } = useContext(markersContext);
 
     const markerInput: useMarkerInputType = useMarkerInput();
 
@@ -31,7 +28,7 @@ export const MarkerMap: FC<MarkerMapProps> = ({ src }) => {
 
     return (
         <Wrapper
-            onDoubleClick={ e => dispatch(offer(e)) }
+            onDoubleClick={ e => addMarker(e) }
             onClick={ () => markerInput.dispatch({ type: markerInput.actions.hide }) }
         >
             <Img

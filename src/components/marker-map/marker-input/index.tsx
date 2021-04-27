@@ -1,17 +1,14 @@
-import React, { FC, useState, useRef, useLayoutEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC, useState, useRef, useLayoutEffect, useContext } from 'react';
 import { Paper, TextField } from '@material-ui/core';
 import { Wrapper } from './styled/wrapper';
 import { markerInputState } from '../hooks/useMarkerInput';
-import { IMarker, tryUpdate, selectors } from '../../../features/markers';
-
-type getMarkerById = (id: string) => IMarker|undefined;
+import { markersContext } from '../../../features/markers';
 
 interface MarkerInputProps extends markerInputState {};
 
 export const MarkerInput: FC<MarkerInputProps> = ({ x = 0, y = 0, id = '' }) => {
 
-    const dispatch = useDispatch();
+    const { updateMarker, getMarkerById } = useContext(markersContext);
 
     const previousId = useRef<string>('');
 
@@ -22,20 +19,18 @@ export const MarkerInput: FC<MarkerInputProps> = ({ x = 0, y = 0, id = '' }) => 
     const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const text: string = e.target.value;
         setText(text);
-    }
-
-    const getMarkerById: getMarkerById = useSelector(selectors.getMarkerById);
+    };
 
     useLayoutEffect(
         () => {
             if (id !== previousId.current) {
-                dispatch(tryUpdate({ text, id: previousId.current }));
+                updateMarker({ text, id: previousId.current });
                 const { text: previousText } = getMarkerById(id) || { text: '' };
                 setText(previousText);
                 previousId.current = id;
             }
         },
-        [id, text, getMarkerById, dispatch]
+        [id, text, getMarkerById, updateMarker]
     );
     
     return (

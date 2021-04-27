@@ -1,26 +1,23 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
 import './App.css';
 import { Container } from './components/styled/container';
 import { UploadImg } from './components/upload-img';
-import { selectors } from './features/upload-img';
 import { MarkerMap } from './components/marker-map';
-import { Notifications } from './components/notifications';
+import { uploadImgContext } from './features/upload-img';
 
 function App() {
 
-  const src = useSelector(selectors.src);
+  const { src } = useContext(uploadImgContext);
 
   return (
     <div className="App">
-      <Notifications />
-      <Container>
-        {
-          src
-            ? (<MarkerMap src={ src } />)
-            : (<UploadImg />)
-        }
-      </Container>
+        <Container>
+          {
+            src
+              ? (<MarkerMap src={ src } />)
+              : (<UploadImg />)
+          }
+        </Container>
     </div>
   );
 }

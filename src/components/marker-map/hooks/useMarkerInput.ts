@@ -1,8 +1,8 @@
 import { useReducer, Dispatch } from 'react';
 
 export interface markerInputActions {
-    show: string,
-    hide: string
+    show: "show",
+    hide: "hide"
 }
 
 export interface markerInputState {
@@ -14,6 +14,16 @@ export interface markerInputState {
 const actions: markerInputActions = {
     show: 'show',
     hide: 'hide',
+};
+
+export type useMarkerReducerTypes = [ markerInputState, Dispatch<useMarkerInputAction> ];
+
+export type useMarkerInputAction = { type: string, payload?: markerInputState };
+
+export type useMarkerInputType = {
+    state: markerInputState,
+    dispatch: Dispatch<useMarkerInputAction>,
+    actions: markerInputActions
 };
 
 const initialState: markerInputState = {
@@ -37,16 +47,6 @@ const reducer = ( _: markerInputState, action: useMarkerInputAction ): markerInp
         }
         default: return initialState;
     }
-};
-
-export type useMarkerReducerTypes = [ markerInputState, Dispatch<useMarkerInputAction> ];
-
-export type useMarkerInputAction = { type: string, payload?: markerInputState };
-
-export type useMarkerInputType = {
-    state: markerInputState,
-    dispatch: Dispatch<useMarkerInputAction>,
-    actions: markerInputActions
 };
 
 export const useMarkerInput = (): useMarkerInputType => {

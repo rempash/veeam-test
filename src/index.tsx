@@ -1,16 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { SnackbarProvider } from 'notistack';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './store';
-import { Provider } from 'react-redux';
+import { UploadImgProvider } from './features/upload-img';
+import { MarkersProvider } from './features/markers';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-        <App />
-    </Provider>
+    <SnackbarProvider
+        anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+        }}
+        autoHideDuration={ 3000 }
+    >
+      <MarkersProvider>
+        <UploadImgProvider>
+          <App />
+        </UploadImgProvider>
+      </MarkersProvider>
+    </SnackbarProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
