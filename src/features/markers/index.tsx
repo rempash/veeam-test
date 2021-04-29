@@ -23,12 +23,12 @@ export type markersContextState = {
 
 export interface IMarker extends MarkerMetaData {
     position: MarkerPosition,
-};
+}
 
 export const markersContext = createContext<markersContextState>({
     markers: [],
-    addMarker: () => {},
-    updateMarker: () => {},
+    addMarker: (e) => e,
+    updateMarker: (e) => e,
     getMarkerById: () => ({ position: { x: 1, y: 1, }, text: '', id: '1'}),
 });
 

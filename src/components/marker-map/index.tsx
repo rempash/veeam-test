@@ -8,9 +8,9 @@ import { markersContext } from '../../features/markers';
 
 interface MarkerMapProps {
     src: string,
-};
+}
 
-export const MarkerMap: FC<MarkerMapProps> = ({ src }) => {
+export const MarkerMap: FC<MarkerMapProps> = ({ src }: MarkerMapProps) => {
 
     const { markers, addMarker } = useContext(markersContext);
 
@@ -26,11 +26,11 @@ export const MarkerMap: FC<MarkerMapProps> = ({ src }) => {
         [markerInput]
     );
 
-    return (
-        <Wrapper
-            onDoubleClick={ e => addMarker(e) }
-            onClick={ () => markerInput.dispatch({ type: markerInput.actions.hide }) }
-        >
+  return (
+    <Wrapper
+      onDoubleClick={ (e) => addMarker(e) }
+      onClick={ () => markerInput.dispatch({ type: markerInput.actions.hide }) }
+    >
             <Img
                 src={src}
             />
@@ -50,6 +50,6 @@ export const MarkerMap: FC<MarkerMapProps> = ({ src }) => {
                     />
                 ))
             }
-        </Wrapper>
-    )
+    </Wrapper>
+  )
 };

@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { SnackbarProvider } from 'notistack';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { UploadImgProvider } from './features/upload-img';
 import { MarkersProvider } from './features/markers';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 ReactDOM.render(
   <React.StrictMode>
+    <CssBaseline />
     <SnackbarProvider
         anchorOrigin={{
             vertical: 'top',

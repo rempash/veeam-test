@@ -3,19 +3,17 @@ import { markerInputState } from '../../hooks/useMarkerInput';
 
 interface markerInputWrapperProps extends markerInputState {
     width?: number,
-    height?: number
 }
 
 export const Wrapper = styled.div`
-    ${({ x, y, width = 10, height = 11 }: markerInputWrapperProps) => {
+    ${({ x, y, width = 10 }: markerInputWrapperProps) => {
         return `
-        width: ${width}vw;
-        height: ${height}vh;
-        left: ${x - (width / 2.25)}vw;
-        top: ${y + (height / 5)}vh;
+        width: 10%;
+        left: calc(${x}vw - ${(width / 2)}%);
+        top: calc(${y}vh + 2.5px);
         `;
     }}
     position: absolute;
-    padding: 10px;
+    padding: 0 10px;
     z-index: 999;
 `;

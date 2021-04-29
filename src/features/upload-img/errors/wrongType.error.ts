@@ -3,4 +3,4 @@ export class WrongTypeError extends Error {
         super();
         this.message = `Wrong type of file, file must be an image`;
     }
-};
+}

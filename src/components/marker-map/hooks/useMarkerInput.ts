@@ -9,7 +9,7 @@ export interface markerInputState {
     x: number,
     y: number,
     id?: string,
-};
+}
 
 const actions: markerInputActions = {
     show: 'show',

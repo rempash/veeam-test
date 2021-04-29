@@ -4,9 +4,7 @@ import { Wrapper } from './styled/wrapper';
 import { markerInputState } from '../hooks/useMarkerInput';
 import { markersContext } from '../../../features/markers';
 
-interface MarkerInputProps extends markerInputState {};
-
-export const MarkerInput: FC<MarkerInputProps> = ({ x = 0, y = 0, id = '' }) => {
+export const MarkerInput: FC<markerInputState> = ({ x = 0, y = 0, id = '' }) => {
 
     const { updateMarker, getMarkerById } = useContext(markersContext);
 

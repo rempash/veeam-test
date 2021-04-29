@@ -6,9 +6,9 @@ import { markerInputState } from '../hooks/useMarkerInput';
 
 interface MarkerProps extends IMarker {
     showMarker: (value: markerInputState) => void
-};
+}
 
-export const Marker: FC<MarkerProps> = ({ text, position, showMarker, id }) => {
+export const Marker: FC<MarkerProps> = ({ position, showMarker, id }) => {
     return (
         <MarkerImg
             onDoubleClick={ e => e.stopPropagation() }

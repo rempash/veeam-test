@@ -9,7 +9,7 @@ export type uploadImgState = {
     uploadFile: (e: ChangeEvent<HTMLInputElement>) => void,
 };
 
-export const uploadImgContext = createContext<uploadImgState>({ src: '', uploadFile: () => {} });
+export const uploadImgContext = createContext<uploadImgState>({ src: '', uploadFile: (e) => e });
 
 export const UploadImgProvider: FC = ({ children }) => {
 
@@ -20,7 +20,7 @@ export const UploadImgProvider: FC = ({ children }) => {
     const uploadFile = (e: ChangeEvent<HTMLInputElement>) => {
         try {
             if (e.target.files) {
-                const [ file ] = Array.from(e.target.files);
+                const [ file ]: File[] = Array.from(e.target.files);
     
                 const fileSizeMB = Math.round(file.size/1024/1024);
                 const maxFileSize: number = parseInt(process.env.REACT_APP_MAX_FILE_SIZE || '0');
