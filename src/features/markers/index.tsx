@@ -39,8 +39,9 @@ export const MarkersProvider: FC = ({ children }) => {
     const { enqueueSnackbar } = useSnackbar();
 
     const addMarker = (e: React.MouseEvent<HTMLDivElement>) => {
+        const { top, left, width, height }: DOMRect = (e.target as HTMLElement).getBoundingClientRect();
         const { clientX, clientY } = e;
-        const position: MarkerPosition = getMarkerPosition(clientX, clientY);
+        const position: MarkerPosition = getMarkerPosition(clientX, clientY, left, top, width, height);
         setMarkers([
             ...markers,
             {

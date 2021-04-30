@@ -6,11 +6,11 @@ interface markerInputWrapperProps extends markerInputState {
 }
 
 export const Wrapper = styled.div`
-    ${({ x, y, width = 10 }: markerInputWrapperProps) => {
+    ${({ x, y, width = 15 }: markerInputWrapperProps) => {
         return `
-        width: 10%;
-        left: calc(${x}vw - ${(width / 2)}%);
-        top: calc(${y}vh + 2.5px);
+        width: ${width}%;
+        left: calc(${x}% - ${(width / 2)}%);
+        top: calc(${y}% - 4px);
         `;
     }}
     position: absolute;
