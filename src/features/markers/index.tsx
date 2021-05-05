@@ -2,7 +2,7 @@ import React, { createContext, useState, FC, useCallback } from 'react';
 import { useSnackbar } from 'notistack';
 import { v4 as uuid_v4 } from "uuid";
 import { TextSizeError } from './errors/textSize.error';
-import { getMarkerPosition } from './utils/getMatrkerPosition/getMarkerPosition';
+import { getMarkerPosition, ClickPosition } from './utils/getMatrkerPosition/getMarkerPosition';
 
 export type MarkerPosition = {
     x: number,
@@ -41,7 +41,15 @@ export const MarkersProvider: FC = ({ children }) => {
     const addMarker = (e: React.MouseEvent<HTMLDivElement>) => {
         const { top, left, width, height }: DOMRect = (e.target as HTMLElement).getBoundingClientRect();
         const { clientX, clientY } = e;
-        const position: MarkerPosition = getMarkerPosition(clientX, clientY, left, top, width, height);
+        const clickPosition: ClickPosition = {
+            clientX,
+            clientY,
+            top,
+            left,
+            width,
+            height
+        };
+        const position: MarkerPosition = getMarkerPosition(clickPosition);
         setMarkers([
             ...markers,
             {

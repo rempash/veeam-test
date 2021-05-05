@@ -5,4 +5,5 @@ export const Img = styled.img.attrs(props => ({
 }))`
     max-width: 100vw;
     max-height: 100vh;
+    display: block;
 `;

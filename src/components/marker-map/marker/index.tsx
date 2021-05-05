@@ -1,23 +1,23 @@
 import React, { FC } from 'react';
-import { IMarker } from '../../../features/markers';
-import { MarkerImg } from './styled/marker-img';
-import icon from './assets/marker.svg';
-import { markerInputState } from '../hooks/useMarkerInput';
+import { IMarker, MarkerMetaData } from '../../../features/markers';
+import { Label } from './styled/label';
 
 interface MarkerProps extends IMarker {
-    showMarker: (value: markerInputState) => void
+    updateMarker: (data: MarkerMetaData) => void
 }
 
-export const Marker: FC<MarkerProps> = ({ position, showMarker, id }) => {
+export const Marker: FC<MarkerProps> = ({ position, updateMarker, id }) => {
+
+    const onInput = (e: React.SyntheticEvent<HTMLDivElement>) => {
+        updateMarker({ id, text: (e.target as HTMLDivElement).innerHTML });
+    }
+
     return (
-        <MarkerImg
-            onDoubleClick={ e => e.stopPropagation() }
-            onClick={ (e) => {
-                showMarker({ x: position.x, y: position.y, id });
-                e.stopPropagation();
-            } }
-            src={ icon } x={ position.x }
+        <Label
+            x={ position.x }
             y={ position.y }
+            onInput={ onInput }
+            contentEditable
         />
     );
 }
