@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /Users/apple/.yarn/bin/yarn.js start
+  /usr/local/bin/node /Users/apple/.yarn/bin/yarn.js eslint
 
 PATH: 
   /Users/apple/.yarn/bin:/Users/apple/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/apple/.yarn/bin:/Users/apple/.config/yarn/global/node_modules/.bin:/opt/apache-maven/bin:/opt/apache-maven/bin
@@ -34,7 +34,7 @@ npm manifest:
       "@testing-library/jest-dom": "^5.11.4",
       "@testing-library/react": "^11.1.0",
       "@testing-library/user-event": "^12.1.10",
-      "@types/jest": "^26.0.15",
+      "@types/jest": "^26.0.23",
       "@types/node": "^12.0.0",
       "@types/react-dom": "^17.0.0",
       "@types/styled-components": "^5.1.9",
@@ -1999,10 +1999,18 @@ Lockfile:
     dependencies:
       "@types/istanbul-lib-report" "*"
   
-  "@types/jest@*", "@types/jest@^26.0.15":
+  "@types/jest@*":
     version "26.0.22"
     resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.22.tgz#8308a1debdf1b807aa47be2838acdcd91e88fbe6"
     integrity sha512-eeWwWjlqxvBxc4oQdkueW5OF/gtfSceKk4OnOAGlUSwS/liBRtZppbJuz1YkgbrbfGOoeBHun9fOvXnjNwrSOw==
+    dependencies:
+      jest-diff "^26.0.0"
+      pretty-format "^26.0.0"
+  
+  "@types/jest@^26.0.23":
+    version "26.0.23"
+    resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.23.tgz#a1b7eab3c503b80451d019efb588ec63522ee4e7"
+    integrity sha512-ZHLmWMJ9jJ9PTiT58juykZpL7KjwJywFN3Rr2pTSkyQfydf/rk22yS7W8p5DaVUMQ2BQC7oYiU3FjbTM/mYrOA==
     dependencies:
       jest-diff "^26.0.0"
       pretty-format "^26.0.0"

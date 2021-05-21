@@ -4,9 +4,10 @@
         "es2021": true
     },
     "extends": [
-        "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "airbnb",
+        "react-app",
+        "react-app/jest"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -21,7 +22,12 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
+        "import/no-unresolved": "off",
+        "import/extensions": 0,
+        "import/prefer-default-export": 0,
+        "no-tabs": 0,
         "react/prop-types": 0,
-        "no-empty": 0
+        "array-bracket-spacing": 0
     }
 }
